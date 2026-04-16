@@ -67,23 +67,24 @@ Masalah riset yang layak harus memenuhi 5 kriteria:
 PROBLEM STATEMENT BUILDER
 
 Domain & Konteks
-  Domain   : ____________________
-  Konteks  : ____________________
+  Domain   : Teknologi Informasi(e-learning)
+  Konteks  : Penggunaan aplikasi pembelajaran online mahasiswa diperguruan tinggi
 
 System Context
-  Input       : ____________________
-  Process     : ____________________
-  Output      : ____________________
-  Outcome     : ____________________
-  Constraints : ____________________
-  Stakeholders: ____________________
+  Input       : Materi pembelajaran (file materi, link file, vidio, quiz) dan interaksi pengguna 
+  Process     : Penyajian materi dan interaksi pengguna dalam aplikasi (pengerjaan quiz, klik)
+  Output      : Tampilan materi dan hasil interaksi (nilai quiz, progres belajar)
+  Outcome     : Tingkat penyelesaian materi (completion rate ) dan pemahaman mahasiswa
+  Constraints : Koneksi internet, desain antarmuka aplikasi, keterbatasan waktu belajar mahasiswa
+  Stakeholders: Mahasiswa, dosen, dan pengembang aplikasi e-learning
 
 Fenomena → Problem
-  Fenomena yang diamati             : ____________________
-  Gejala (symptom) yang terukur     : ____________________
-  Masalah yang didiagnosis          : ____________________
-  Masalah riset (researchable)      : ____________________
-  Variabel yang terukur             : ____________________
+  Fenomena yang diamati             : Pengguna e-learning meningkat namun mahasiswa tidak menyelesaikan materi
+  Gejala (symptom) yang terukur     : Completion rate rendah (kurang dari 50%)
+  Masalah yang didiagnosis          : Kurangnya fitur interaktif dalam aplikasi (hanya teks dan video tanpa interaksi)
+  Masalah riset (researchable)      : Belum ada analisis pengaruh fitur interaktif (quiz real-time) terhadap completion rate mahasiswa 
+  Variabel yang terukur             : Completion rate (%), waktu belajar (menit), jumlah interaksi (klik/quiz)
+
 
 Problem Quality Check
   [ ] Clarity — Apakah satu orang membaca akan paham?
@@ -93,7 +94,7 @@ Problem Quality Check
   [ ] Impact — Apakah ada kontribusi jika terjawab?
 
 Problem Statement (1 paragraf):
-  ____________________
+  Penggunaan aplikasi e-learning dalam proses pembelajaran semakin meningkat, namun tingkat penyelesaian materi oleh mahasiswa masih rendah. Hal ini ditunjukkan dengan completion rate yang berada di bawah 50%. Permasalahan ini diduga disebabkan oleh kurangnya fitur interaktif dalam aplikasi, di mana sebagian besar hanya menyediakan materi berupa teks dan video tanpa adanya interaksi langsung. Hingga saat ini, belum terdapat analisis yang secara spesifik mengkaji pengaruh fitur interaktif seperti quiz real-time terhadap tingkat penyelesaian materi. Oleh karena itu, penelitian ini bertujuan untuk menganalisis pengaruh fitur interaktif terhadap completion rate mahasiswa dengan menggunakan metrik seperti tingkat penyelesaian, waktu belajar, dan jumlah interaksi pengguna.
 ```
 
 ---
@@ -102,18 +103,19 @@ Problem Statement (1 paragraf):
 
 Pilih satu topik di bidang TI yang diminati. Transformasikan melalui 5 tahap Problem Formation Model.
 
-**Topik awal:** ________________________________________
+**Topik awal:** Penggunaan Aplikasi E-Learning pada Mahasiswa
 
 | Tahap | Hasil |
 |-------|-------|
-| Reality | *Contoh: Aplikasi e-commerce sering ditinggalkan saat checkout* |
-| Observed Issue (Symptom) | *Contoh: Bounce rate checkout 68%* |
-| Diagnosed Problem (Root Cause) | |
-| Researchable Problem | |
-| Measurable Variable | |
+| Reality | Mahasiswa sering menggunakan aplikasi e-learning untuk belajar  |
+| Observed Issue (Symptom) | Banyak mahasiswa tidak menyelesaikan materi(completion rate rendah, <50%) |
+| Diagnosed Problem (Root Cause) | Kurangnya interaktivitas pada aplikasi (hanya berupa teks atau video tanpa feedback langsung) |
+| Researchable Problem | Belum ada studi yang mengukur pengaruh fitur interaktif (quiz real-time) terhadap tingkat penyelesaian materi pada e-learning |
+| Measurable Variable | Completion rate (%), waktu belajar (menit), dan jumlah interaksi (klik/quiz) |
 
 **Apakah terjebak solution-first thinking?** [ ] Ya / [ ] Tidak
-> Jika ya, kembali ke tahap mana? ________________________
+Tidak
+
 
 ---
 
@@ -123,14 +125,14 @@ Gambarkan konteks sistem dari masalah riset di Latihan 1.
 
 | Komponen | Deskripsi |
 |----------|----------|
-| Input | *Contoh: Request HTTP dari browser pengguna* |
-| Process | |
-| Output | |
-| Outcome | |
-| Constraints | |
-| Stakeholders | |
+| Input | Materi pembelajaran + input dari mahasiswa (mengirimkan jawaban jika ada tugas, melakukan presensi) |
+| Process | Penyajian materi dan interaksi (quiz, klik) |
+| Output | Tampilan materi + hasil quiz |
+| Outcome | Mahasiswa memahami materi atau berhenti belajar |
+| Constraints | koneksi internet, desain aplikasi, dan waktu belajar mahasiswa |
+| Stakeholders | Mahasiswa, dosen, dan pengembang aplikasi |
 
-**Komponen mana yang paling relevan dengan masalah riset?** _______________
+**Komponen mana yang paling relevan dengan masalah riset?** Process (fitur interaktif dalam aplikasi)
 
 ---
 
@@ -140,17 +142,16 @@ Evaluasi problem statement yang sudah dibuat menggunakan 5 kriteria.
 
 | Kriteria | Skor (1-5) | Justifikasi |
 |----------|-----------|-------------|
-| Clarity | *Contoh: 4 — cukup jelas tapi perlu spesifikasi dataset* | |
-| Measurability | | |
-| Relevance | | |
-| Testability | | |
-| Impact | | |
+| Clarity |  4  | Sudah jelas, tapi bisa ditambah jenis platform |
+| Measurability | 5 | da metrik (%, menit, jumlah interaksi) |
+| Relevance | 5 | Sangat relevan di dunia pendidikan |
+| Testability | 5 | Bisa diuji dengan eksperimen |
+| Impact | 4 | Berdampak pada kualitas pembelajaran |
 
-**Skor total:** _____ / 25
+**Skor total:** 23 / 25
 
 **Problem statement versi final (1 paragraf):**
-> ___________________________________________________
-> ___________________________________________________
+Penggunaan aplikasi e-learning dalam proses pembelajaran semakin meningkat, namun tingkat penyelesaian materi oleh mahasiswa masih tergolong rendah. Data menunjukkan bahwa banyak mahasiswa tidak menyelesaikan materi yang diberikan, yang diduga disebabkan oleh kurangnya fitur interaktif dalam aplikasi pembelajaran. Sebagian besar aplikasi hanya menyediakan konten berupa teks dan video tanpa adanya interaksi langsung yang dapat meningkatkan keterlibatan pengguna. Namun, belum terdapat penelitian yang secara spesifik mengukur pengaruh fitur interaktif seperti quiz real-time terhadap tingkat penyelesaian materi. Oleh karena itu, penelitian ini bertujuan untuk menganalisis pengaruh fitur interaktif terhadap completion rate mahasiswa dengan menggunakan metrik seperti tingkat penyelesaian, waktu belajar, dan jumlah interaksi pengguna.
 
 ---
 
@@ -159,5 +160,4 @@ Evaluasi problem statement yang sudah dibuat menggunakan 5 kriteria.
 > Bandingkan "masalah" yang biasa ditemui saat coding (bug, error) dengan masalah riset. Apa perbedaan fundamental dalam cara mendefinisikan dan mendekati keduanya?
 
 **Jawaban:**
-> ___________________________________________________
-> ___________________________________________________
+Masalah pada coding seperti bug atau error berfokus pada perbaikan sistem agar dapat berjalan dengan benar, sedangkan masalah riset lebih menekankan pada pemahaman fenomena dan pencarian bukti ilmiah. Dalam riset, masalah harus dirumuskan secara jelas, terukur, dan dapat diuji, serta tidak langsung berfokus pada solusi, melainkan pada analisis dan pembuktian terhadap suatu masalah.
