@@ -41,6 +41,7 @@ Mata kuliah ini menggunakan pendekatan **Positivist** (fenomena TI bisa diukur o
 | Ukuran sukses | Sistem berfungsi, client puas | Hipotesis terjawab, temuan tervalidasi |
 | Kegagalan | Harus dihindari | Harus dilaporkan (negative result = kontribusi) |
 
+
 ### Istilah Penting
 
 - **Research Mindset** — Pola pikir yang menuntut bukti dan mempertanyakan asumsi
@@ -72,7 +73,8 @@ Tanggal          : 5 April 2026
 4. Komitmen etika:
    - Data yang tidak akan dimanipulasi: Data hasil eksperimen asli tanpa penghapusan sembarangan.
    - Batasan yang diakui sejak awal: Keterbatasan dataset dan lingkungan pengujian.
-
+```
+---
 ---
 
 ## Latihan 1 — Identifikasi Distorsi
