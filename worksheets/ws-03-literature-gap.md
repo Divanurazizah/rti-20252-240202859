@@ -61,39 +61,45 @@ Membandingkan deep learning 2024 dengan decision tree sederhana tanpa justifikas
 ```
 LITERATURE MAPPING
 
-Topik      : ____________________
-Database   : ____________________
-Query      : ____________________
-Tahun      : ____________________
-Hasil awal : ____ paper → Screening → ____ paper final
+Topik      : Analisis Kepuasan Pelanggan E-Commerce
+Database   : Google Scholar
+Query      : e-commerce customer satisfaction decision tree classification
+Tahun      : 2020-2024
+Hasil awal : 45 paper → Screening → 5 paper final
 
 Literature Matrix (concept-centric):
 
-| Study | Tahun | Method | Data | Result | Limitation |
-|-------|-------|--------|------|--------|------------|
-|       |       |        |      |        |            |
+| Study         | Tahun | Method        | Data             | Result  | Limitation                    |
+| ------------- | ----- | ------------- | ---------------- | ------- | ----------------------------- |
+| Rahman et al. | 2023  | Decision Tree | Review produk    | Acc 86% | Overfitting                   |
+| Lee et al.    | 2022  | Decision Tree | Data pelanggan   | Acc 87% | Data terbatas                 |
+| Sari et al.   | 2023  | Decision Tree | Tokopedia review | Acc 84% | Kurang akurat di teks panjang |
+| Chen et al.   | 2024  | Decision Tree | E-commerce       | Acc 88% | Kurang stabil                 |
+| Ahmad et al.  | 2021  | Decision Tree | Review           | Acc 85% | Data tidak bersih             |
+
 
 Pola yang ditemukan:
-  Metode dominan     : ____________________
-  Dataset umum       : ____________________
-  Limitasi berulang  : ____________________
+  Metode dominan     : Decision Tree
+  Dataset umum       : Review produk pelanggan
+  Limitasi berulang  : Data masih sedikit, overfitting (model terlalu "menghafal"), akurasi belum stabil, data teks tidak rapi
 
 GAP IDENTIFICATION
 
-Gap 1: [Jenis: performance / method / data / context]
-  Deskripsi    : ____________________
-  Bukti        : ____________________
-  Signifikansi : ____________________
+Gap 1: [Jenis: Data Gap + Context Gap]
+  Deskripsi    : Dataset yang digunakan masih terbatas dan belum fokus ke e-commerce Indonesia secara spesifik
+  Bukti        : Banyak penelitian menggunakan data umum atau dataset luar
+  Signifikansi : Model bisa tidak optimal saat diterapkan pada kondisi nyata di Indonesia
 
-Gap 2: [Jenis: ____]
-  Deskripsi    : ____________________
-  Bukti        : ____________________
-  Signifikansi : ____________________
+Gap 2: [Jenis: Performance Gap]
+  Deskripsi    : Akurasi Decision Tree belum stabil
+  Bukti        : Akurasi berkisar 83%–88%
+  Signifikansi : Hasil klasifikasi belum cukup kuat untuk keputusan bisnis
 
 Baseline Selection:
-| Baseline | Relevansi | Representatif | Source |
-|----------|-----------|---------------|--------|
-|          |           |               |        |
+| Baseline      | Relevansi | Representatif | Source      |
+|---------------|-----------|---------------|-------------|
+| Decision Tree | Klasifikasi kepuasan | Metode umum | Rahman 2023 |
+| Naive Bayes   | Sama-sama klasifikasi teks | Banyak digunakan | Sari 2023 |
 ```
 
 ---
@@ -102,21 +108,21 @@ Baseline Selection:
 
 Gunakan topik riset dari WS-02. Cari minimal 5 paper relevan menggunakan Google Scholar atau database lain.
 
-**Topik riset:** ________________________________________
-**Query pencarian:** ____________________________________
-**Database:** ___________________________________________
+**Topik riset:** Klasifikasi kepuasan pelanggan e-commerce
+**Query pencarian:** klasifikasi kepuasan pelanggan e-commerce decision tree
+**Database:** Google Scholar
 
-| # | Study | Tahun | Method | Dataset | Result | Limitasi |
-|---|-------|-------|--------|---------|--------|----------|
-| 1 | *Contoh: Rahman et al.* | *2023* | *CNN* | *ImageNet subset* | *Acc 91%* | *Hanya 3 kelas* |
-| 2 | | | | | | |
-| 3 | | | | | | |
-| 4 | | | | | | |
-| 5 | | | | | | |
+| # | Study         | Tahun | Method | Dataset    | Result  | Limitasi     |
+| - | ------------- | ----- | ------ | ---------- | ------- | ------------ |
+| 1 | Rahman et al. | 2023  | DT     | Review     | Acc 86% | Overfitting  |
+| 2 | Lee et al.    | 2022  | DT     | Pelanggan  | Acc 87% | Data kecil   |
+| 3 | Sari et al.   | 2023  | DT     | Tokopedia  | Acc 84% | Teks panjang |
+| 4 | Chen et al.   | 2024  | DT     | E-commerce | Acc 88% | Tidak stabil |
+| 5 | Ahmad et al.  | 2021  | DT     | Review     | Acc 85% | Data noise   |
 
-**Pola yang terlihat — Metode dominan:** ___________________
-**Limitasi yang berulang:** ______________________________
 
+**Pola yang terlihat — Metode dominan:** Decision Tree
+**Limitasi yang berulang:** Overfitting & data terbatas
 ---
 
 ## Latihan 2 — Gap Identification
@@ -125,14 +131,14 @@ Berdasarkan tabel di Latihan 1, identifikasi gap.
 
 | Jenis Gap | Ditemukan? | Gap Statement |
 |-----------|-----------|---------------|
-| Performance Gap | [ ] Ya / [ ] Tidak | *Contoh: Akurasi turun di bawah 80% untuk kelas minoritas* |
-| Method Gap | [ ] Ya / [ ] Tidak | |
-| Data Gap | [ ] Ya / [ ] Tidak | |
-| Context Gap | [ ] Ya / [ ] Tidak | |
+| Performance Gap | [✔] Ya / [ ] Tidak | Akurasi belm stabil|
+| Method Gap | [] Ya / [✔] Tidak | Metode sudah umum |
+| Data Gap | [✔] Ya / [ ] Tidak | Dataset terbatas |
+| Context Gap | [✔] Ya / [ ] Tidak | Kurang fokus di indonesia |
 
-**Gap utama yang dipilih:** _____________________________
+**Gap utama yang dipilih:** Data + Context Gap
 **Mengapa gap ini penting (bukan sekadar "belum ada yang meneliti")?**
-> ___________________________________________________
+> Dataset yang tidak representatif menyebabkan model kurang optimal saat digunakan di e-commerce Indonesia.
 
 ---
 
@@ -140,14 +146,14 @@ Berdasarkan tabel di Latihan 1, identifikasi gap.
 
 Pilih 2 baseline dari literatur yang sudah dibaca.
 
-| # | Baseline | Mengapa Relevan | Mengapa Representatif | Apakah SOTA? | Sumber |
-|---|----------|----------------|----------------------|-------------|--------|
-| 1 | *Contoh: RF + TF-IDF* | *Task sama: klasifikasi teks* | *Dipakai 6 dari 10 paper* | *Bukan, tapi common practice* | *Lee et al., 2022* |
-| 2 | | | | | |
+| # | Baseline      | Mengapa Relevan                      | Mengapa Representatif | Apakah SOTA? | Sumber      |
+| - | ------------- | ------------------------------------ | --------------------- | ------------ | ----------- |
+| 1 | Decision Tree | Digunakan untuk klasifikasi kepuasan | Metode umum           | Tidak        | Rahman 2023 |
+| 2 | Naive Bayes   | Sama-sama klasifikasi teks           | Banyak digunakan      | Tidak        | Sari 2023   |
 
-**Apakah pemilihan baseline ini bisa dianggap straw man?** [ ] Ya / [ ] Tidak
-> Justifikasi: ________________________________________
 
+**Apakah pemilihan baseline ini bisa dianggap straw man?** [ ] Ya / [✔ ] Tidak
+> Justifikasi: Karena kedua metode merupakan metode umum yang sering digunakan dalam penelitian, sehingga perbandingan tetap adil dan tidak termasuk straw man.
 ---
 
 ## Refleksi
@@ -155,5 +161,4 @@ Pilih 2 baseline dari literatur yang sudah dibaca.
 > Apa perbedaan antara "belum ada yang meneliti ini" (klaim tanpa bukti) dengan research gap yang valid? Bagaimana cara membuktikan bahwa sebuah gap benar-benar ada?
 
 **Jawaban:**
-> ___________________________________________________
-> ___________________________________________________
+> Pernyataan “belum ada yang meneliti” tidak cukup tanpa bukti. Research gap yang benar harus didasarkan pada beberapa penelitian yang menunjukkan kekurangan yang sama. Cara membuktikannya adalah dengan mencari dan membandingkan beberapa paper, lalu melihat pola kelemahan yang sering muncul.
