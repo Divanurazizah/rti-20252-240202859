@@ -67,34 +67,35 @@ Masalah riset yang layak harus memenuhi 5 kriteria:
 PROBLEM STATEMENT BUILDER
 
 Domain & Konteks
-  Domain   : Teknologi Informasi(e-learning)
-  Konteks  : Penggunaan aplikasi pembelajaran online mahasiswa diperguruan tinggi
+  Domain   : Teknologi Informasi(Data Mining/Machine Learning)
+  Konteks  : Analisis kepuasan pelanggan pada platform e-commerce
 
 System Context
-  Input       : Materi pembelajaran (file materi, link file, vidio, quiz) dan interaksi pengguna 
-  Process     : Penyajian materi dan interaksi pengguna dalam aplikasi (pengerjaan quiz, klik)
-  Output      : Tampilan materi dan hasil interaksi (nilai quiz, progres belajar)
-  Outcome     : Tingkat penyelesaian materi (completion rate ) dan pemahaman mahasiswa
-  Constraints : Koneksi internet, desain antarmuka aplikasi, keterbatasan waktu belajar mahasiswa
-  Stakeholders: Mahasiswa, dosen, dan pengembang aplikasi e-learning
+  Input       : Data review pelanggan (teks ulasan, rating)
+  Process     : Preprocessing data teks (cleaning, tokenizing) dan proses klasifikasi menggunakan algoritma (Decision Tree / Naive Bayes)
+  Output      : Label klasifikasi kepuasan pelanggan (puas / tidak puas)
+  Outcome     : Informasi tingkat kepuasan pelanggan untuk mendukung pengambilan keputusan bisnis
+  Constraints : Dataset terbatas, data tidak seimbang, adanya noise pada data teks
+  Stakeholders: Penjual, platform e-commerce, dan pelanggan
 
 Fenomena → Problem
-  Fenomena yang diamati             : Pengguna e-learning meningkat namun mahasiswa tidak menyelesaikan materi
-  Gejala (symptom) yang terukur     : Completion rate rendah (kurang dari 50%)
-  Masalah yang didiagnosis          : Kurangnya fitur interaktif dalam aplikasi (hanya teks dan video tanpa interaksi)
-  Masalah riset (researchable)      : Belum ada analisis pengaruh fitur interaktif (quiz real-time) terhadap completion rate mahasiswa 
-  Variabel yang terukur             : Completion rate (%), waktu belajar (menit), jumlah interaksi (klik/quiz)
+  Fenomena yang diamati             : Banyak pelanggan memberikan review pada platform e-commerce
+  Gejala (symptom) yang terukur     : Hasil klasifikasi kepuasan pelanggan belum stabil (akurasi berkisar 83%–88%)
+  Masalah yang didiagnosis          : Dataset yang digunakan terbatas, tidak representatif, dan mengandung noise
+  Masalah riset (researchable)      : Belum ada analisis penggunaan dataset yang lebih representatif untuk meningkatkan performa klasifikasi kepuasan pelanggan pada e-commerce Indonesia
+  Variabel yang terukur             : Accuracy (%), Precision, Recall, F1-score
 
 
 Problem Quality Check
-  [ ] Clarity — Apakah satu orang membaca akan paham?
-  [ ] Measurability — Apakah ada metrik kuantitatif?
-  [ ] Relevance — Apakah penting untuk domain?
-  [ ] Testability — Apakah bisa gagal?
-  [ ] Impact — Apakah ada kontribusi jika terjawab?
+  [✔] Clarity — Apakah satu orang membaca akan paham?
+  [✔] Measurability — Apakah ada metrik kuantitatif?
+  [✔] Relevance — Apakah penting untuk domain?
+  [✔] Relevance — Apakah penting untuk domain?
+  [✔] Testability — Apakah bisa gagal?
+  [✔] Impact — Apakah ada kontribusi jika terjawab?
 
 Problem Statement (1 paragraf):
-  Penggunaan aplikasi e-learning dalam proses pembelajaran semakin meningkat, namun tingkat penyelesaian materi oleh mahasiswa masih rendah. Hal ini ditunjukkan dengan completion rate yang berada di bawah 50%. Permasalahan ini diduga disebabkan oleh kurangnya fitur interaktif dalam aplikasi, di mana sebagian besar hanya menyediakan materi berupa teks dan video tanpa adanya interaksi langsung. Hingga saat ini, belum terdapat analisis yang secara spesifik mengkaji pengaruh fitur interaktif seperti quiz real-time terhadap tingkat penyelesaian materi. Oleh karena itu, penelitian ini bertujuan untuk menganalisis pengaruh fitur interaktif terhadap completion rate mahasiswa dengan menggunakan metrik seperti tingkat penyelesaian, waktu belajar, dan jumlah interaksi pengguna.
+  Penggunaan metode klasifikasi untuk menganalisis kepuasan pelanggan pada platform e-commerce semakin meningkat, namun performa model yang dihasilkan masih belum stabil dengan akurasi yang berkisar antara 83% hingga 88%. Permasalahan ini diduga disebabkan oleh keterbatasan dataset yang digunakan, seperti jumlah data yang sedikit, tidak representatif, serta adanya noise pada data review pelanggan. Selain itu, sebagian besar penelitian masih menggunakan dataset umum yang belum tentu sesuai dengan konteks e-commerce di Indonesia. Hingga saat ini, belum terdapat penelitian yang secara khusus menganalisis pengaruh penggunaan dataset yang lebih representatif terhadap peningkatan performa klasifikasi kepuasan pelanggan. Oleh karena itu, penelitian ini bertujuan untuk menganalisis performa metode klasifikasi dengan menggunakan dataset yang lebih representatif, dengan metrik evaluasi berupa accuracy, precision, recall, dan F1-score.
 ```
 
 ---
@@ -103,15 +104,15 @@ Problem Statement (1 paragraf):
 
 Pilih satu topik di bidang TI yang diminati. Transformasikan melalui 5 tahap Problem Formation Model.
 
-**Topik awal:** Penggunaan Aplikasi E-Learning pada Mahasiswa
+**Topik awal:** Klasifikasi kepuasan pelanggan e-commerce
 
-| Tahap | Hasil |
-|-------|-------|
-| Reality | Mahasiswa sering menggunakan aplikasi e-learning untuk belajar  |
-| Observed Issue (Symptom) | Banyak mahasiswa tidak menyelesaikan materi(completion rate rendah, <50%) |
-| Diagnosed Problem (Root Cause) | Kurangnya interaktivitas pada aplikasi (hanya berupa teks atau video tanpa feedback langsung) |
-| Researchable Problem | Belum ada studi yang mengukur pengaruh fitur interaktif (quiz real-time) terhadap tingkat penyelesaian materi pada e-learning |
-| Measurable Variable | Completion rate (%), waktu belajar (menit), dan jumlah interaksi (klik/quiz) |
+| Tahap                          | Hasil                                                                                                                               |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Reality                        | Banyak pelanggan memberikan review pada platform e-commerce                                                                         |
+| Observed Issue (Symptom)       | Akurasi klasifikasi kepuasan pelanggan belum stabil (83%–88%)                                                                       |
+| Diagnosed Problem (Root Cause) | Dataset terbatas, tidak representatif, dan mengandung noise                                                                         |
+| Researchable Problem           | Belum ada studi yang mengkaji pengaruh penggunaan dataset yang lebih representatif terhadap performa klasifikasi kepuasan pelanggan |
+| Measurable Variable            | Accuracy, Precision, Recall, F1-score                                                                                               |
 
 **Apakah terjebak solution-first thinking?** [ ] Ya / [ ] Tidak
 Tidak
@@ -123,16 +124,17 @@ Tidak
 
 Gambarkan konteks sistem dari masalah riset di Latihan 1.
 
-| Komponen | Deskripsi |
-|----------|----------|
-| Input | Materi pembelajaran + input dari mahasiswa (mengirimkan jawaban jika ada tugas, melakukan presensi) |
-| Process | Penyajian materi dan interaksi (quiz, klik) |
-| Output | Tampilan materi + hasil quiz |
-| Outcome | Mahasiswa memahami materi atau berhenti belajar |
-| Constraints | koneksi internet, desain aplikasi, dan waktu belajar mahasiswa |
-| Stakeholders | Mahasiswa, dosen, dan pengembang aplikasi |
+| Komponen     | Deskripsi                                                        |
+| ------------ | ---------------------------------------------------------------- |
+| Input        | Data review pelanggan (teks dan rating)                          |
+| Process      | Preprocessing teks dan klasifikasi (Decision Tree / Naive Bayes) |
+| Output       | Hasil klasifikasi (puas / tidak puas)                            |
+| Outcome      | Insight kepuasan pelanggan                                       |
+| Constraints  | Dataset terbatas, data tidak bersih, bahasa tidak baku           |
+| Stakeholders | Penjual, platform e-commerce, pelanggan                          |
 
-**Komponen mana yang paling relevan dengan masalah riset?** Process (fitur interaktif dalam aplikasi)
+
+**Komponen mana yang paling relevan dengan masalah riset?** Input (dataset) dan Process (klasifikasi)
 
 ---
 
@@ -140,18 +142,18 @@ Gambarkan konteks sistem dari masalah riset di Latihan 1.
 
 Evaluasi problem statement yang sudah dibuat menggunakan 5 kriteria.
 
-| Kriteria | Skor (1-5) | Justifikasi |
-|----------|-----------|-------------|
-| Clarity |  4  | Sudah jelas, tapi bisa ditambah jenis platform |
-| Measurability | 5 | da metrik (%, menit, jumlah interaksi) |
-| Relevance | 5 | Sangat relevan di dunia pendidikan |
-| Testability | 5 | Bisa diuji dengan eksperimen |
-| Impact | 4 | Berdampak pada kualitas pembelajaran |
+| Kriteria      | Skor(1-5) | Justifikasi              |
+| ------------- | ---- | ------------------------ |
+| Clarity       | 5    | Sudah jelas dan spesifik |
+| Measurability | 5    | Metrik lengkap           |
+| Relevance     | 5    | Sangat relevan           |
+| Testability   | 5    | Bisa diuji eksperimen    |
+| Impact        | 5    | Berdampak pada bisnis    |
 
-**Skor total:** 23 / 25
+**Skor total:** 25 / 25
 
 **Problem statement versi final (1 paragraf):**
-Penggunaan aplikasi e-learning dalam proses pembelajaran semakin meningkat, namun tingkat penyelesaian materi oleh mahasiswa masih tergolong rendah. Data menunjukkan bahwa banyak mahasiswa tidak menyelesaikan materi yang diberikan, yang diduga disebabkan oleh kurangnya fitur interaktif dalam aplikasi pembelajaran. Sebagian besar aplikasi hanya menyediakan konten berupa teks dan video tanpa adanya interaksi langsung yang dapat meningkatkan keterlibatan pengguna. Namun, belum terdapat penelitian yang secara spesifik mengukur pengaruh fitur interaktif seperti quiz real-time terhadap tingkat penyelesaian materi. Oleh karena itu, penelitian ini bertujuan untuk menganalisis pengaruh fitur interaktif terhadap completion rate mahasiswa dengan menggunakan metrik seperti tingkat penyelesaian, waktu belajar, dan jumlah interaksi pengguna.
+Penggunaan metode klasifikasi untuk menganalisis kepuasan pelanggan pada platform e-commerce semakin berkembang, namun performa model yang dihasilkan masih belum stabil dengan akurasi yang berkisar antara 83% hingga 88%. Permasalahan ini diduga disebabkan oleh keterbatasan dataset yang digunakan, seperti jumlah data yang sedikit, tidak representatif, serta adanya noise pada data review pelanggan. Selain itu, sebagian besar penelitian masih menggunakan dataset umum yang belum tentu sesuai dengan konteks e-commerce di Indonesia. Hingga saat ini, belum terdapat penelitian yang secara khusus menganalisis pengaruh penggunaan dataset yang lebih representatif terhadap peningkatan performa klasifikasi kepuasan pelanggan. Oleh karena itu, penelitian ini bertujuan untuk menganalisis performa metode klasifikasi dengan menggunakan dataset yang lebih representatif, dengan metrik evaluasi berupa accuracy, precision, recall, dan F1-score.
 
 ---
 
@@ -160,4 +162,4 @@ Penggunaan aplikasi e-learning dalam proses pembelajaran semakin meningkat, namu
 > Bandingkan "masalah" yang biasa ditemui saat coding (bug, error) dengan masalah riset. Apa perbedaan fundamental dalam cara mendefinisikan dan mendekati keduanya?
 
 **Jawaban:**
-Masalah pada coding seperti bug atau error berfokus pada perbaikan sistem agar dapat berjalan dengan benar, sedangkan masalah riset lebih menekankan pada pemahaman fenomena dan pencarian bukti ilmiah. Dalam riset, masalah harus dirumuskan secara jelas, terukur, dan dapat diuji, serta tidak langsung berfokus pada solusi, melainkan pada analisis dan pembuktian terhadap suatu masalah.
+Masalah dalam coding seperti bug atau error berfokus pada memperbaiki sistem agar dapat berjalan dengan benar. Sementara itu, masalah dalam riset tidak hanya berfokus pada penyelesaian, tetapi pada pemahaman dan pembuktian suatu fenomena secara ilmiah. Dalam riset, masalah harus dirumuskan secara sistematis, memiliki variabel yang terukur, serta dapat diuji kebenarannya. Selain itu, riset tidak selalu mencari solusi langsung, melainkan berusaha mengidentifikasi gap dalam pengetahuan dan membuktikannya melalui eksperimen yang valid.
