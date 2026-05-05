@@ -67,34 +67,34 @@ Jika rantai ini tidak lengkap, RQ belum mature. Bi-directional: RQ yang tidak bi
 ```
 RQ-CONTRIBUTION-HYPOTHESIS
 
-Gap Statement  : ____________________
+Gap Statement  : Akurasi klasifikasi kepuasan pelanggan menggunakan Decision Tree belum stabil dan dataset yang digunakan masih terbatas.
 
 Research Question:
-  Tipe         : [ ] Comparison  [ ] Improvement  [ ] Exploratory
-  Formulasi    : ____________________
-  Variabel IV  : ____________________
-  Variabel DV  : ____________________
-  Metrik       : ____________________
-  Dataset      : ____________________
-  Baseline     : ____________________
+  Tipe         : [ ] Comparison  [x] Improvement  [ ] Exploratory
+  Formulasi    : Apakah penerapan teknik Pruning dan SMOTE pada algoritma Decision Tree dapat meningkatkan Accuracy dan F1-Score secara signifikan pada dataset kepuasan pelanggan e-commerce dibandingkan dengan Decision Tree standar?
+  Variabel IV  : Teknik optimasi model (Pruning dan SMOTE).
+  Variabel DV  : Performa model (Accuracy dan F1-Score).
+  Metrik       : Accuracy, F1-Score, dan Precision.
+  Dataset      : Dataset Review E-Commerce Indonesia (contoh: Tokopedia/Shopee).
+  Baseline     : Decision Tree Standar (Tanpa optimasi).
 
 Quality Check RQ:
-  [ ] Variabel spesifik
-  [ ] Metrik jelas
-  [ ] Baseline ada
-  [ ] Konteks disebutkan
-  [ ] Memerlukan eksperimen (bukan hanya survei literatur)
+  [x] Variabel spesifik
+  [x] Metrik jelas
+  [x] Baseline ada
+  [x] Konteks disebutkan
+  [x] Memerlukan eksperimen (bukan hanya survei literatur)
 
 Contribution Statement:
-  Apa yang baru diketahui : ____________________
-  Jenis kontribusi        : [ ] Improvement  [ ] Comparison  [ ] Novel approach
-  Gap yang diisi          : ____________________
+  Apa yang baru diketahui : Efektivitas kombinasi penyeimbangan data (SMOTE) dan penyederhanaan pohon (Pruning) dalam menangani ketidakseimbangan data review pelanggan di Indonesia.
+  Jenis kontribusi        : [x] Improvement  [ ] Comparison  [ ] Novel approach
+  Gap yang diisi          : Mengatasi masalah Performance Gap (akurasi tidak stabil) dan Context Gap.
 
 Hypothesis Pair:
-  H₀ : ____________________
-  H₁ : ____________________
-  Threshold              : ____________________
-  Justifikasi threshold  : ____________________
+  H₀ : Tidak ada perbedaan signifikan pada nilai F1-Score antara Decision Tree yang dioptimasi dengan Decision Tree standar.
+  H₁ : Penerapan Pruning dan SMOTE menghasilkan F1-Score yang lebih tinggi secara signifikan dibandingkan model standar.
+  Threshold              : p < 0,05
+  Justifikasi threshold  : Standar umum dalam pengujian statistik untuk menolak hipotesis nol dalam riset IT.
 ```
 
 ---
@@ -103,25 +103,25 @@ Hypothesis Pair:
 
 Gunakan gap yang ditemukan di WS-03. Transformasikan menjadi Research Question.
 
-**Gap dari WS-03:** ____________________________________
+**Gap dari WS-03:** 
+Akurasi Decision Tree belum stabil (83%-88%) dan dataset masih terbatas serta kurang fokus pada konteks lokal.
 
 **RQ versi pertama (tulis bebas):**
-> ___________________________________________________
+> Bagaimana meningkatkan akurasi klasifikasi kepuasan pelanggan e-commerce di Indonesia agar lebih stabil hasilnya?
 
 **Evaluasi RQ:**
 
 | Komponen | Ada? | Isi |
 |----------|------|-----|
-| Metode spesifik | *Contoh: Ya — CNN vs RF* | |
-| Metrik terukur | | |
-| Baseline | | |
-| Dataset/konteks | | |
+| Metode spesifik | Ya | Decision Tree + SMOTE/Pruning |
+| Metrik terukur | Ya | Accuracy & F1-Score |
+| Baseline | Ya | Decision Tree Standar |
+| Dataset/konteks | Ya | E-commerce Indonesia |
 
-**Tipe RQ:** [ ] Comparison / [ ] Improvement / [ ] Exploratory
+**Tipe RQ:** [ ] Comparison / [x] Improvement / [ ] Exploratory
 
 **RQ versi revisi (setelah evaluasi):**
-> ___________________________________________________
-
+> Apakah modifikasi algoritma Decision Tree menggunakan C4.5 dengan Pruning dapat menghasilkan Accuracy yang lebih tinggi dibandingkan algoritma ID3 pada dataset kepuasan pelanggan e-commerce Indonesia?
 ---
 
 ## Latihan 2 — Hypothesis Pair
@@ -130,14 +130,14 @@ Rumuskan pasangan hipotesis dari RQ di Latihan 1.
 
 | Komponen | Isi |
 |----------|-----|
-| H₀ | *Contoh: Tidak ada perbedaan signifikan F1-Score antara CNN dan RF pada dataset CIC-MalMem-2022* |
-| H₁ | |
-| Metrik | |
-| Threshold | |
-| Justifikasi threshold | |
+| H₀ | Tidak terdapat peningkatan akurasi yang signifikan pada penggunaan algoritma C4.5 dibanding ID3 pada dataset yang digunakan. |
+| H₁ | Algoritma C4.5 memberikan hasil akurasi yang lebih stabil dan tinggi secara signifikan dibandingkan ID3. |
+| Metrik | Accuracy (%) |
+| Threshold | Kenaikan minimal 3% dari baseline. |
+| Justifikasi threshold | Batas minimal untuk dianggap memiliki dampak praktis pada pengambilan keputusan bisnis. |
 
-**Apakah hipotesis ini falsifiable?** [ ] Ya / [ ] Tidak
-> Bagaimana cara membuktikannya salah? ___________________
+**Apakah hipotesis ini falsifiable?** [x] Ya / [ ] Tidak
+> Bagaimana cara membuktikannya salah? Jika setelah diuji, hasil akurasi C4.5 ternyata sama dengan atau bahkan lebih rendah dari ID3.
 
 ---
 
@@ -147,14 +147,14 @@ Lengkapi rantai dari RQ hingga metode analisis.
 
 | Tahap | Isi |
 |-------|-----|
-| RQ | *Contoh: Apakah CNN menghasilkan F1-Score lebih tinggi dari RF...* |
-| Variable (IV) | *Contoh: Jenis algoritma (CNN vs RF)* |
-| Variable (DV) | |
-| Metric | |
-| Data source | |
-| Analysis method | |
+| RQ | Perbandingan performa C4.5 vs ID3 pada klasifikasi review pelanggan |
+| Variable (IV) | Jenis Algoritma (C4.5 vs ID3) |
+| Variable (DV) | Akurasi Klasifikasi |
+| Metric | Confusion Matrix (Accuracy, Precision, Recall) |
+| Data source | Crawling data review dari Google Play Store (App Tokopedia/Shopee) |
+| Analysis method | Komparasi hasil matriks evaluasi dan T-Test |
 
-**Apakah rantai lengkap?** [ ] Ya / [ ] Tidak
+**Apakah rantai lengkap?** [x] Ya / [ ] Tidak
 > Jika tidak, tahap mana yang perlu direvisi? ______________
 
 ---
@@ -163,6 +163,6 @@ Lengkapi rantai dari RQ hingga metode analisis.
 
 > Ambil satu judul skripsi/paper yang pernah dibaca. Coba ekstrak RQ-nya. Apakah RQ tersebut memenuhi semua komponen (metode, metrik, baseline, konteks)? Jika tidak, apa yang hilang?
 
-**Judul:** _____________________________________________
-**RQ yang diekstrak:** __________________________________
-**Komponen yang hilang:** _______________________________
+**Judul:** Sentiment Analysis of Indonesian E-Commerce Service Quality using Random Forest
+**RQ yang diekstrak:** Sejauh mana efektivitas Random Forest dalam mengklasifikasikan sentimen pelanggan?
+**Komponen yang hilang:** RQ tersebut tidak menyebutkan Baseline (dibandingkan dengan apa?) dan Metrik yang spesifik (apakah fokus ke akurasi atau kecepatan proses?).
