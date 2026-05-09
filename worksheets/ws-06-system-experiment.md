@@ -67,25 +67,26 @@ Jika variabel tidak bisa di-map ke komponen apapun → arsitektur perlu didesain
 ```
 SYSTEM-EXPERIMENT MAPPING
 
-Research Question: ____________________
+Research Question: Apakah modifikasi algoritma Decision Tree menggunakan C4.5 dengan Pruning dan SMOTE dapat menghasilkan performa (F1-Score) yang lebih stabil pada dataset fashion e-commerce Indonesia dibandingkan model standar?
 
 Variable → Component Mapping:
 | Variabel | Tipe | Komponen Sistem | Cara Manipulasi/Pengukuran |
 |----------|------|-----------------|---------------------------|
-|          | IV   |                 |                           |
-|          | DV   |                 |                           |
-|          | CV   |                 |                           |
+| Teknik Optimasi (SMOTE & Pruning) | IV | Preprocessing Module & Model Trainer | Toggle (On/Off) pada fungsi SMOTE dan parameter Pruning di kode program. |
+| Performa Model (F1-Score) | DV | Evaluation Engine / Logger | Menghasilkan file CSV berisi hasil Confusion Matrix (Accuracy, Precision, Recall, F1) setelah testing. |
+| Jenis Algoritma & Dataset | CV | Config Loader / Constants | Mengunci jenis algoritma (C4.5) dan dataset (Fashion lokal) di file konfigurasi/header agar tidak berubah. |
 
 4 Prinsip Desain:
-  [ ] Traceability — Setiap komponen bisa ditelusuri ke variabel
-  [ ] Variable Isolation — IV bisa diubah tanpa mengubah CV
-  [ ] Measurement Integration — Pengukuran DV built-in
-  [ ] Reproducibility — Setup bisa direkonstruksi
+  [✓] Traceability — Setiap komponen bisa ditelusuri ke variabel
+  [✓] Variable Isolation — IV bisa diubah tanpa mengubah CV
+  [✓] Measurement Integration — Pengukuran DV built-in
+  [✓] Reproducibility — Setup bisa direkonstruksi
 
 Experimental Setup:
-  Input data     : ____________________
-  Parameter      : ____________________
-  Output format  : ____________________
+  Input data     : Dataset Ulasan Fashion E-Commerce Indonesia (CSV).
+  Parameter      : SMOTE (k-neighbors=5), Pruning (Confidence Factor=0.25).
+  Output format  : Confusion Matrix Report & Decision Tree Visualization (Graphviz).
+
 ```
 
 ---
@@ -94,16 +95,17 @@ Experimental Setup:
 
 Gunakan RQ dan variabel dari WS-05. Petakan ke komponen sistem.
 
-**RQ:** __________________________________________________
+**RQ:** Apakah penerapan SMOTE dan Pruning meningkatkan F1-Score pada klasifikasi ulasan fashion dibandingkan C4.5 standar?
 
 | Variabel | Tipe | Komponen Sistem | Cara Manipulasi / Pengukuran |
 |----------|------|-----------------|---------------------------|
-| *Contoh: Jenis model* | *IV* | *Modul classifier (swap RF ↔ CNN)* | *Ganti config `model_type`* |
-| | DV | | |
-| | CV | | |
+| Penyeimbangan Data | *IV* | SMOTE_Module | Switch Boolean `use_smote = True/False` |
+| Stabilitas Prediksi| DV | Metrics_Calculator | Print hasil Accuracy & F1-Score ke konsol/log. |
+| Prosedur Cleaning | CV | Preprocessing_Module | Fungsi clean_text() dibuat statis (tidak berubah). |
 
-**Apakah semua variabel bisa di-map?** [ ] Ya / [ ] Tidak
-> Jika tidak, komponen apa yang perlu ditambahkan? _________
+
+**Apakah semua variabel bisa di-map?** [ ✓ ] Ya / [ ] Tidak
+> Jika tidak, komponen apa yang perlu ditambahkan? Semua variabel sudah terwakili dalam modul utama.
 
 ---
 
@@ -113,14 +115,14 @@ Evaluasi desain sistem terhadap 4 prinsip.
 
 | Prinsip | Status | Bukti / Penjelasan |
 |---------|--------|-------------------|
-| Traceability | *Contoh: ✅ — setiap modul punya label variabel* | |
-| Modularity | | |
-| Controllability | | |
-| Measurability | | |
+| Traceability | ✅ | Setiap modul (SMOTE, Pruning, C4.5) jelas tugasnya melayani variabel penelitian. |
+| Modularity | ✅ | Modul SMOTE dipisahkan dari Classifier, sehingga bisa dicopot-pasang tanpa merusak alur klasifikasi. |
+| Controllability | ✅ | Parameter seperti `min_samples_leaf` atau `sampling_strategy` diletakkan di variabel konfigurasi di awal kode. |
+| Measurability | ✅ | Sistem otomatis menghitung metrics setiap kali selesai melakukan `model.fit().` |
 
-**Prinsip mana yang paling sulit dipenuhi?** _______________
+**Prinsip mana yang paling sulit dipenuhi?** Variable Isolation
 **Strategi untuk mengatasinya:**
-> ___________________________________________________
+> Memastikan bahwa saat SMOTE dimatikan, dataset yang masuk ke Classifier adalah dataset asli yang belum dimanipulasi, namun tetap melewati tahap preprocessing yang sama (CV).
 
 ---
 
@@ -130,14 +132,14 @@ Jika sistem memiliki 3 komponen utama, rencanakan ablation study.
 
 | Kondisi | Komponen A | Komponen B | Komponen C | Hasil yang Diharapkan |
 |---------|-----------|-----------|-----------|----------------------|
-| Full | *Contoh: ✅ CNN* | *Contoh: ✅ Temporal features* | *Contoh: ✅ Z-score norm* | *Baseline penuh* |
-| – A | ❌ (ganti RF) | ✅ | ✅ | |
-| – B | ✅ | ❌ (tanpa temporal) | ✅ | |
-| – C | ✅ | ✅ | ❌ (tanpa normalisasi) | |
+| Full | ✅ | ✅ | ✅ | Performa optimal dengan pohon keputusan yang ringkas dan seimbang. |
+| – A | ❌ | ✅ | ✅ | F1-Score turun drastis karena model bias ke kelas mayoritas (ulasan positif). |
+| – B | ✅ | ❌| ✅ | Akurasi tinggi di data latih, tapi rendah di data uji (terjadi overfitting). |
+| – C | ✅ | ✅ | ❌ (tanpa normalisasi) | Banyak noise (simbol/angka) masuk ke model, membuat pohon menjadi sangat kompleks. |
 
-**Komponen mana yang diprediksi paling berkontribusi?** _____
+**Komponen mana yang diprediksi paling berkontribusi?** Komponen A (SMOTE)
 **Mengapa?**
-> ___________________________________________________
+> Karena dalam data ulasan fashion di e-commerce, jumlah sentimen positif (puas) biasanya jauh lebih banyak daripada sentimen negatif (tidak puas). Ketidakseimbangan data (class imbalance) yang ekstrim ini akan membuat model cenderung mengabaikan ulasan negatif jika tidak ditangani dengan SMOTE, sehingga nilai F1-Score (yang memperhatikan keseimbangan) akan rendah.
 
 ---
 
@@ -146,5 +148,7 @@ Jika sistem memiliki 3 komponen utama, rencanakan ablation study.
 > Apa risiko jika sistem dibangun seperti produk (monolitik, fitur lengkap) lalu baru dilakukan eksperimen? Mengapa arsitektur modular penting untuk riset?
 
 **Jawaban:**
-> ___________________________________________________
-> ___________________________________________________
+> Risiko Sistem Monolitik:
+Jika sistem dibangun seperti produk (fitur langsung lengkap/monolitik), kita akan mengalami kesulitan saat hasil eksperimen tidak sesuai harapan. Kita tidak akan tahu fitur mana yang sebenarnya membantu meningkatkan akurasi dan fitur mana yang justru menjadi penghambat (noise). Hasil riset menjadi tidak valid secara ilmiah karena tidak ada isolasi variabel; kita hanya bisa mengklaim "sistemnya jalan," tapi tidak bisa menjelaskan "mengapa sistemnya jalan."
+> Pentingnya Arsitektur Modular:
+Arsitektur modular sangat penting untuk riset karena memungkinkan peneliti melakukan Variable Isolation. Dengan memisahkan modul (SMOTE, Preprocessing, Classifier), kita bisa mengganti atau mematikan satu modul tanpa mengganggu fungsi modul lainnya. Hal ini mempermudah proses evaluasi tiap komponen secara adil, memastikan reprodusibilitas (orang lain bisa mengulang eksperimen dengan mudah), dan membuat penjelasan saat sidang skripsi menjadi jauh lebih logis dan sistematis.
