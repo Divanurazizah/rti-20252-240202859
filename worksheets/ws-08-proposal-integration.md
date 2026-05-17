@@ -90,13 +90,13 @@ Kumpulkan hasil dari WS-02 sampai WS-07 menjadi satu ringkasan proposal.
 
 | Komponen | Sumber | Isi (1-2 kalimat) |
 |----------|--------|-------------------|
-| Problem Statement | WS-02 | *Contoh: Sistem rekomendasi memiliki akurasi tinggi (RMSE 0.87) tetapi satisfaction score rendah (45/100). Gap antara metrik teknis dan kepuasan pengguna belum diteliti.* |
-| Gap | WS-03 | *Contoh: Tidak ada studi yang mengintegrasikan collaborative filtering dengan user-context signals untuk meningkatkan satisfaction.* |
-| RQ | WS-04 | *Contoh: Apakah penambahan context-aware signals pada collaborative filtering meningkatkan satisfaction score tanpa menurunkan RMSE?* |
-| Hipotesis | WS-04 | *Contoh: H₁: Sistem CF+context menghasilkan satisfaction ≥ 70/100 dengan RMSE ≤ 0.90 dibanding baseline CF murni.* |
-| Variabel & Metrik | WS-05 | *Contoh: IV = jenis sistem (CF vs CF+context); DV = satisfaction score (skala 0-100) + RMSE (regresi).* |
-| Sistem | WS-06 | |
-| Desain Eksperimen | WS-07 | |
+| Problem Statement | WS-02 | Klaim performa akurasi antar algoritma klasifikasi sentimen e-commerce di Indonesia sangat bervariasi dan tidak konsisten antar penelitian. Hal ini menyulitkan para praktisi TI untuk memilih algoritma yang paling optimal karena adanya perbedaan karakteristik data dasar yang digunakan oleh tiap peneliti. |
+| Gap | WS-03 | Terdapat Methodological Gap di mana belum ada studi komparatif sistematis yang mengevaluasi secara menyeluruh bagaimana faktor eksternal (gaya bahasa ulasan dan ukuran dataset) mendistorsi validitas klaim keunggulan algoritma pada literatur terbuka. |
+| RQ | WS-04 | Bagaimana dampak karakteristik dataset (ukuran sampel ulasan dan tingkat formalitas gaya bahasa) terhadap variasi tingkat akurasi algoritma klasifikasi sentimen yang dilaporkan dalam literatur ilmiah? |
+| Hipotesis | WS-04 | H₁: Variasi akurasi algoritma yang dilaporkan dalam literatur dipengaruhi secara signifikan oleh tingkat formalitas bahasa pada dataset yang diuji (bahasa baku vs bahasa slang/lokal), bukan hanya disebabkan oleh keunggulan internal struktur algoritmanya. |
+| Variabel & Metrik | WS-05 | Independent Variable (IV) = Karakteristik dataset pada paper (Ukuran sampel & Kategori bahasa); Dependent Variable (DV) = Nilai performa yang dilaporkan di dalam paper (Metrik nilai $F_1\text{-Score}$ atau Accuracy). |
+| Sistem | WS-06 | "Sistem" atau artefak dalam riset ini berupa Protokol Ekstraksi Data berbasis kriteria inklusi-eksklusi standar (PRISMA framework) untuk mengumpulkan, menyaring, dan mengekstraksi parameter paper secara objektif dari database Google Scholar. |
+| Desain Eksperimen | WS-07 | Eksperimen dilakukan dalam bentuk studi meta-analisis terhadap 10-15 paper eksperimen sentimen e-commerce di Indonesia, mengelompokkan data performanya berdasarkan karakteristik teks, lalu diuji distribusinya menggunakan analisis statistik deskriptif. |
 
 ---
 
@@ -106,18 +106,18 @@ Verifikasi 6 koneksi kritis. Isi dengan merujuk tabel di Latihan 1.
 
 | Koneksi | Status | Bukti |
 |---------|--------|-------|
-| Problem → Gap | *Contoh: ✅ — gap muncul dari 15 paper Bab 3 yang tidak ada yang mengkombinasikan CF + context untuk satisfaction* | |
-| Gap → RQ | *Contoh: ✅ — RQ langsung menanyakan apakah CF+context meningkatkan satisfaction* | |
-| RQ → Hypothesis | *Contoh: ✅ — H₁ memprediksi satisfaction ≥ 70 dengan threshold RMSE ≤ 0.90* | |
-| Hypothesis → Metric | | |
-| Metric → System | | |
-| System → Experiment | | |
+| Problem → Gap | ✅ | Masalah variasi klaim akurasi di literatur melahirkan gap berupa kebutuhan akan studi komparatif sistematis untuk menguji faktor penyebab distorsi tersebut. |
+| Gap → RQ | ✅ | RQ secara langsung menanyakan dampak karakteristik dataset untuk menjawab gap metodologis yang belum diteliti oleh peneliti terdahulu. |
+| RQ → Hypothesis |✅ | Hipotesis memberikan dugaan ilmiah yang searah dengan RQ, yaitu variasi akurasi dipengaruhi oleh faktor formalitas bahasa pada dataset. |
+| Hypothesis → Metric | ✅ | Variabel karakteristik bahasa dan performa model diturutkan menjadi metrik pengelompokan teks (formal vs slang) dan metrik rasio ($F_1\text{-Score}$ / Accuracy). |
+| Metric → System | ✅ | Protokol ekstraksi data (Sistem) dirancang khusus untuk mencatat metrik bahasa dan nilai akurasi dari setiap paper ke dalam tabel spreadsheet |
+| System → Experiment | ✅ | Protokol penyaringan tersebut dijalankan sebagai instrumen utama untuk mengumpulkan dan membedah data dari 10-15 paper secara objektif. |
 
-**Koneksi mana yang paling lemah?** _______________________
+**Koneksi mana yang paling lemah?** Hypothesis → Metric
 **Bagaimana cara memperkuatnya?**
-> ___________________________________________________
+> Membuat batasan operasional yang jelas di Bab 5 mengenai apa yang dikategorikan sebagai dataset "Bahasa Formal" dan "Bahasa Slang/Lokal" (misalnya berdasarkan persentase kemunculan kata tidak baku/singkatan yang disebutkan di dalam paper yang di-review).
 
-**Konsistensi horizontal — apakah istilah dan scope konsisten?** [ ] Ya / [ ] Tidak
+**Konsistensi horizontal — apakah istilah dan scope konsisten?** [ X ] Ya / [ ] Tidak
 > Jika tidak, di bagian mana terjadi inkonsistensi? _________
 
 ---
@@ -128,14 +128,14 @@ Evaluasi proposal mini menggunakan rubrik.
 
 | Kriteria | Skor (1-3) | Justifikasi |
 |----------|-----------|-------------|
-| Koherensi | *Contoh: 2 — koneksi gap→RQ masih lemah karena gap belum cukup narrow* | |
-| Specificity | *Contoh: 3 — metrik (satisfaction 0-100, RMSE) sudah terdefinisi numerik* | |
-| Feasibility | | |
-| Rigor | | |
+| Koherensi | 3 | Seluruh 6 koneksi vertikal terhubung erat dari atas ke bawah tanpa ada lompatan logika. Benang merah (red thread) sangat jelas. |
+| Specificity | 3 | Metrik performa ($F_1\text{-Score}$) dan jumlah batasan sampel data yang akan dianalisis sudah ditentukan angkanya secara pasti, yaitu minimal  |
+| Feasibility | 3 | Timeline sangat realistis (1-2 bulan) karena tidak ada risiko gagal koding atau error program. Fokus sepenuhnya pada membaca, merekap, dan menganalisis data di Excel. |
+| Rigor | 2 | Menggunakan metode penyaringan literatur formal yang terstruktur sehingga terhindar dari bias pemilihan paper (bukan asal pilih paper yang disukai). |
 
-**Skor total:** _____ / 12
+**Skor total:** 12 / 12
 
-**Apakah proposal siap untuk fase eksekusi?** [ ] Ya / [ ] Belum
+**Apakah proposal siap untuk fase eksekusi?** [x] Ya / [ ] Belum
 > Jika belum, apa yang perlu diperbaiki? __________________
 
 ---
@@ -144,8 +144,8 @@ Evaluasi proposal mini menggunakan rubrik.
 
 > Dari seluruh proses WS-01 sampai WS-08, bagian mana yang paling mudah dan paling sulit? Mengapa? Apa yang akan dilakukan berbeda jika mengulang dari awal?
 
-**Bagian termudah:** ____________________________________
-**Bagian tersulit:** ____________________________________
+**Bagian termudah:** WS-01 dan WS-02 karena sejak awal materi tersebut melatih cara berpikir kritis, membaca, dan mengevaluasi argumen dari paper ilmiah tanpa dibebani keharusan membuat kode program.
+**Bagian tersulit:** Mengubah pola pikir (mindset) bahwa riset Teknologi Informasi tidak selalu harus menghasilkan produk berupa aplikasi atau baris kode baru, melainkan bisa berbentuk evaluasi kritis terhadap pengetahuan komputasi yang sudah ada.
 **Yang akan dilakukan berbeda:**
-> ___________________________________________________
+> Jika mengulang dari awal, saya akan konsisten memilih jalur analisis literatur (Meta-Analysis) ini sejak minggu pertama. Dengan begitu, saya bisa mengumpulkan paper berkualitas lebih banyak dan mempermatang kriteria penyaringannya sejak dini tanpa membuang waktu kebingungan di antara urusan koding.
 > ___________________________________________________
