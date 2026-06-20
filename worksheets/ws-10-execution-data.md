@@ -96,15 +96,15 @@ Susun execution plan untuk eksperimen Anda. Tentukan skenario, jumlah run, dan s
 
 | Run # | Skenario | Seed | Parameter Kunci | Status |
 |-------|----------|------|----------------|--------|
-| *1* | *Contoh: BERT-base, DS-1* | *42* | *lr=2e-5, epoch=10* | *Planned* |
-| *2* | *BERT-base, DS-1* | *123* | *lr=2e-5, epoch=10* | *Planned* |
-| 3 | | | | |
-| 4 | | | | |
-| 5 | | | | |
+| *1* | Skenario A: Koleksi Data Formal | sentimen AND e-commerce AND baku | Range tahun: 2020–2026 | Planned |
+| *2* | Skenario A: Koleksi Data Formal | sentimen AND e-commerce AND kuesioner | Range tahun: 2020–2026 | Planned |
+| 3 | Skenario B: Koleksi Data Slang | sentimen AND e-commerce AND slang | Range tahun: 2020–2026 | Planned |
+| 4 | Skenario B: Koleksi Data Slang | sentimen AND e-commerce AND media sosial | Range tahun: 2020–2026 | Planned |
+| 5 | Skenario B: Koleksi Data Slang | sentimen AND e-commerce AND ulasan casual | Range tahun: 2020–2026 | Planned |
 
-**Total skenario:** ____
-**Run per skenario:** ____
-**Total run keseluruhan:** ____
+**Total skenario:** 2 Skenario Utama (Kondisi Kontrol Data Formal vs Kondisi Intervensi Data Slang)
+**Run per skenario:** Skenario A (2 Sesi Run), Skenario B (3 Sesi Run)
+**Total run keseluruhan:** 5 Sesi Eksekusi Penelusuran
 
 ---
 
@@ -115,26 +115,25 @@ Desain format data log untuk eksperimen Anda. Tentukan field apa saja yang akan 
 **Identitas:**
 | Field | Contoh |
 |-------|--------|
-| Run ID | *run-001* |
-| Timestamp | *2025-03-15T10:30:00* |
-| | |
+| Run ID | run-search-001 |
+| Timestamp | 2026-06-20T10:30:00 |
+| Paper ID | Sari_et_al_2020 (Format sitasi utama) |
 
 **Konfigurasi:**
 | Field | Contoh |
 |-------|--------|
-| Seed | *42* |
-| Code version | *commit abc1234* |
-| | |
+| Seed | *sentimen AND e-commerce AND slang |
+| Database Source | Google Scholar indexed via Publish or Perish v8.8 |
+| Algorithm Checked | Naïve Bayes / C4.5 Decision Tree |
 
 **Hasil:**
 | Metrik | Tipe Data | Range Valid |
 |--------|----------|-------------|
-| *Contoh: Accuracy* | *float* | *0.0 – 1.0* |
-| | | |
-| | | |
+| Accuracy | float | 0.0 – 1.0 (atau 0% – 100%) |
+| F1-Score | float | 0.0 – 1.0 |
+| Dataset Size | integer |  lebih besar sama dengan 1 (Jumlah total baris data ulasan) |
 
-**Format output:** [ ] CSV / [ ] JSON / [ ] Database / [ ] Lainnya: ____
-
+**Format output:** [ ✓ ] CSV / [ ✓ ] JSON / [ ] Database / [ ] Lainnya: File Spreadsheet .xlsx (WPS Office)
 ---
 
 ## Latihan 3 — Anomaly Protocol
@@ -143,10 +142,10 @@ Rencanakan bagaimana menangani anomali. Untuk setiap jenis, tentukan langkah yan
 
 | Jenis Anomali | Contoh | Tindakan |
 |---------------|--------|----------|
-| Run gagal (crash) | *Contoh: OOM pada batch_size=64* | *Contoh: Dokumentasi, re-run batch_size=32, catat perubahan* |
-| Hasil ekstrem | | |
-| Waktu eksekusi anomali | | |
-| Inkonsistensi dengan run lain | | |
+| Run gagal (crash) | IP laptop terblokir sementara oleh Google Scholar (CAPTCHA loop) | Dokumentasikan waktu kejadian, lakukan pembersihan cache browser, istirahatkan penelusuran selama 30 menit, lalu gunakan koneksi alternatif. |
+| Hasil ekstrem | Sebuah paper mengklaim akurasi Naïve Bayes mencapai 100% pada data slang. | Lakukan investigasi manual terhadap Bab Pembahasan paper tersebut; periksa apakah terjadi kebocoran data (data leakage) atau overfitting. Jika tidak valid, masukkan ke kategori eksklusi. |
+| Waktu eksekusi anomali | Publish or Perish tidak merespons (freeze) saat menarik data. | Hentikan paksa aplikasi, perkecil batasan jumlah maksimal pencarian dari maksimal 1000 menjadi maksimal 200 per run. |
+| Inkonsistensi dengan run lain | Metrik evaluasi yang ditulis di abstrak berbeda dengan tabel confusion matrix di dalam isi paper. | Prioritaskan data mentah dari tabel confusion matrix, hitung ulang F1-Score secara mandiri menggunakan rumus teoretis baku, lalu catat revisi tersebut pada log. |
 
 **Prinsip:** Detect → Investigate → Document → Decide
 
@@ -157,6 +156,6 @@ Rencanakan bagaimana menangani anomali. Untuk setiap jenis, tentukan langkah yan
 > Pernahkah Anda melaporkan hasil riset/tugas dari single run? Apa risikonya? Bagaimana multiple run mengubah kepercayaan terhadap hasil?
 
 **Pengalaman sebelumnya:**
-> ___________________________________________________
+> Iya, pada tugas-tugas makalah perkuliahan semester sebelumnya, saya seringkali hanya mengambil kesimpulan dari satu paper utama saja tanpa membandingkannya dengan paper lain (single run perspective). Risikonya adalah kesimpulan menjadi sangat subjektif, bias, dan rawan salah apabila paper acuan utama tersebut ternyata memiliki kekeliruan metodologi.
 **Yang akan dilakukan berbeda:**
-> ___________________________________________________
+> Melalui metode meta-analisis dengan multiple run penelusuran ini, saya mengumpulkan variabilitas data dari belasan paper (rentang tahun 2020-2026). Dengan begitu, saya bisa menghitung nilai rata-rata (mean) serta melihat sebaran penurunan performa algoritma secara objektif. Hal ini membuat kesimpulan penelitian saya menjadi jauh lebih valid, akurat, dan dapat dipercaya secara ilmiah.
