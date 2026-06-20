@@ -63,10 +63,10 @@ Capai **repeatability** dulu, baru **reproducibility**.
 EXPERIMENT SETUP DOCUMENTATION
 
 Hardware:
-  CPU     : ____________________
-  RAM     : ____________________
-  GPU     : ____________________
-  Storage : ____________________
+  CPU     : intel core i5-8250U
+  RAM     : 8 GB
+  GPU     : N/A (CPU-only komputasi statistik deskriptif)
+  Storage : SSD 256 GB / 512 GB
 
 Software:
   OS        : ____________________
@@ -99,23 +99,23 @@ Dokumentasikan environment untuk eksperimen Anda (boleh environment saat ini ata
 
 | Komponen | Spesifikasi |
 |----------|------------|
-| CPU | *Contoh: Intel Core i7-12700H, 14 Core* |
-| RAM | *Contoh: 32 GB DDR5* |
-| GPU | *Contoh: NVIDIA RTX 3060 6GB / CPU-only jika tidak ada GPU* |
-| OS | *Contoh: Ubuntu 22.04 LTS / Windows 11* |
-| Runtime | |
-| Framework | |
-| Random Seed | |
+| CPU | Intel Core i5-8250U |
+| RAM | 8 GB  |
+| GPU | N/A (Studi Literatur Kuantitatif) |
+| OS | Windows 11 |
+| Runtime | Google Chrome  |
+| Framework | PRISMA Statement Framework (Protokol Penyaringan Literatur) |
+| Random Seed | non random |
 
 **Dependencies (minimal 5):**
 
 | Library | Version | Alasan Dibutuhkan |
 |---------|---------|-------------------|
-| *Contoh: scikit-learn* | *1.3.2* | *Klasifikasi + evaluasi metrik* |
-| | | |
-| | | |
-| | | |
-| | | |
+| Google Scholar | engine akses 2026 | Database utama untuk mencari dan mengunduh paper klasifikasi sentimen e-commerce Indonesia. |
+| wps office/excel | v12.1.0 | Media pengolahan data instrumen riset untuk mencatat nilai akurasi, F1-Score, dan ukuran dataset.  |
+| zotero | v6.0 | Manajemen referensi, menyimpan metadata paper, dan melakukan deteksi otomatis terhadap paper yang duplikat. |
+| Publish | v8.8 | Tool otomatisasi untuk menarik metadata ratusan paper sekaligus dari Google Scholar berdasarkan kata kunci riset. |
+| harzing's pop loader | default | Membantu mengeksport metadata pencarian ke format .RIS atau .CSV untuk dianalisis di Excel. |
 
 ---
 
@@ -125,18 +125,18 @@ Rancang tes repeatability sederhana: jalankan kode yang sama 3× di environment 
 
 | Run | Seed | Metrik Utama | Hasil Sama? |
 |-----|------|-------------|-------------|
-| 1 | *Contoh: 42* | *Contoh: Accuracy* | — |
-| 2 | | | [ ] Ya / [ ] Tidak |
-| 3 | | | [ ] Ya / [ ] Tidak |
+| 1 | Deterministic Query | Jumlah paper lolos screening & Nilai rata-rata F1-Score | — |
+| 2 | Deterministic Query | Jumlah paper lolos screening & Nilai rata-rata F1-Score | [ x ] Ya / [ ] Tidak |
+| 3 | Deterministic Query | Jumlah paper lolos screening & Nilai rata-rata F1-Score | [ x ] Ya / [ ] Tidak |
 
 **Jika hasil berbeda, kemungkinan penyebab:**
 > ___________________________________________________
 
 **Checklist kontrol yang sudah diterapkan:**
-- [ ] Random seed di-set di semua level
-- [ ] Tidak ada background process yang mengganggu
-- [ ] Cache dibersihkan antar-run
-- [ ] Config file yang sama untuk semua run
+- [ x ] Random seed di-set di semua level
+- [ x ] Tidak ada background process yang mengganggu
+- [ x ] Cache dibersihkan antar-run
+- [ x ] Config file yang sama untuk semua run
 
 ---
 
@@ -145,25 +145,39 @@ Rancang tes repeatability sederhana: jalankan kode yang sama 3× di environment 
 Tulis README minimum untuk eksperimen Anda (6 komponen wajib).
 
 ```
-# Judul Eksperimen: ____________________
+# Judul Eksperimen: Meta-Analisis Dampak Karakteristik Dataset Terhadap Stabilitas Performa Algoritma Sentimen E-Commerce di Indonesia
 
 ## 1. Environment
-> (Salin spesifikasi dari Latihan 1)
+> Aplikasi Utama: Publish or Perish v8.8 & Mendeley Desktop
+> Spreadsheet: WPS Office Excel / Microsoft Excel (.xlsx)
+> Mesin Pencari: Google Scholar Indexed
+> Protokol: PRISMA Framework 2020
 
 ## 2. Installation
-> (Langkah instalasi, misal: "pip install -r requirements.txt")
+> Install software Harzing's Publish or Perish versi terbaru.
+> Install Mendeley Desktop atau Zotero untuk manajemen sitasi.
+> Siapkan template file pengolah angka (Excel) yang sudah dikonfigurasi rumus rata-rata statistik deskriptifnya.
 
 ## 3. Data
-> (Deskripsi data: sumber, format, ukuran)
+>vSumber Data: 10-15 Paper Ilmiah mengenai klasifikasi sentimen e-commerce lokal.
+> Format: Dokumen PDF (untuk dibaca) dan file metadata `.RIS` / `.CSV`.
+> Batasan Data: Publikasi dalam rentang waktu tahun 2020 - 2026.
 
 ## 4. Execution
-> (Command untuk menjalankan eksperimen)
+> Buka Publish or Perish, pilih Google Scholar.
+> Masukkan kata kunci pencarian pada kolom title: 
+   "sentimen" AND "e-commerce" AND "C4.5" OR "Naïve Bayes"
+> Batasi tahun: 2020-2026, lalu klik 'Search'.
+> Ekspor hasil pencarian ke format Excel (.csv) untuk disaring manual berdasarkan kriteria PRISMA.
 
 ## 5. Configuration
-> (File config yang digunakan + parameter kunci)
+> Inklusi 1: Paper wajib menampilkan metrik evaluasi F1-Score atau Accuracy secara jelas.
+> Inklusi 2: Objek riset wajib berupa ulasan e-commerce berbahasa Indonesia.
+> Eksklusi 3: Paper review, bab utuh tanpa ringkasan jurnal, dan paper duplikat langsung dieliminasi.
 
 ## 6. Expected Output
-> (Contoh output yang diharapkan + format)
+> File `matriks_ekstraksi.xlsx` berisi data rekapitulasi: Nama Penulis, Tahun, Algoritma, Ukuran Dataset, Karakteristik Bahasa (Formal/Slang), dan Skor F1-Score.
+> Diagram Alir PRISMA (format .png) yang menunjukkan proses penyaringan jumlah paper dari awal hingga akhir.
 ```
 
 ---
@@ -172,6 +186,6 @@ Tulis README minimum untuk eksperimen Anda (6 komponen wajib).
 
 > Apakah eksperimen Anda saat ini bisa direproduksi oleh orang lain tanpa bantuan Anda? Komponen apa yang masih hilang?
 
-**Level saat ini:** [ ] Repeatability / [ ] Reproducibility / [ ] Belum keduanya
+**Level saat ini:** [ x ] Repeatability / [ ] Reproducibility / [ ] Belum keduanya
 **Komponen yang belum terdokumentasi:**
-> ___________________________________________________
+> Rumus atau formula spesifik mengenai cara saya mengelompokkan secara objektif mana dataset paper yang masuk kategori "Bahasa Formal" dan mana yang "Bahasa Slang/Lokal" belum tertulis secara matematis di file Excel. 
