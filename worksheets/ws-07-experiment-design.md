@@ -129,8 +129,9 @@ Evaluasi apakah desain eksperimen di Latihan 1 sudah fair.
 
 **Ada yang tidak fair?** [ ] Ya / [✅] Tidak
 > Jika ya, bagaimana cara memperbaikinya? ________________
-
+```
 ---
+
 
 ## Latihan 3 — Threat Analysis
 
@@ -143,9 +144,11 @@ Identifikasi ancaman validitas untuk desain eksperimen ini.
 | Construct | Tahap preprocessing yang terlalu ketat justru bisa menghapus kata-kata kunci lokal yang krusial untuk sentimen. | Menghindari penggunaan stopword removal bawaan bahasa asing yang tidak relevan dengan struktur teks lokal. |
 | Conclusion | Kesimpulan diambil hanya dari satu kali run eksperimen sehingga rawan bias variasi acak | Melakukan pengujian ulang menggunakan metode K-Fold Cross Validation (misal K=5 atau K=10) untuk mendapatkan rata-rata statistik yang stabil. |
 
+
 **Ancaman mana yang paling sulit dimitigasi?** External Validity
 **Mengapa?**
 > Gaya bahasa, singkatan, dan cara konsumen Indonesia menulis ulasan di e-commerce sangat dinamis dan beragam di setiap daerah. Membuat satu dataset lokal yang benar-benar bisa mewakili seluruh populasi pengguna internet di Indonesia secara mutlak adalah hal yang sangat menantang.
+
 
 ---
 
