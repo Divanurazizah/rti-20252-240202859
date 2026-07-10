@@ -86,31 +86,32 @@ Prediksi pertanyaan berdasarkan kategori:
 DEFENSE PREPARATION
 
 Slide Deck Plan:
-  Total slides   : ____ (target: 10-12 konten + title/closing)
-  Time per slide : ~2 min
-  Total time     : ____ menit
+  Total slides   : 10 Konten Utama (termasuk Title & Closing)
+  Time per slide : ~1.5 - 2 menit
+  Total time     : 15 menit
 
 Slide Outline:
 | # | Pesan Utama | Visual | Waktu |
 |---|-------------|--------|-------|
-| 1 | Title       |        | 30s   |
-| 2 | Problem     |        | 2min  |
-| 3 | Gap + RQ    |        | 2min  |
-| ..|             |        |       |
+| 1 | Judul & Latar Belakang Komparasi | Slide Judul, Logo Universitas Putra Bangsa | 1.0 min |
+| 2 | Masalah Inti: Noise Bahasa Slang | Tangkapan layar ulasan kotor Shopee (Slang)  | 2.0 min |
+| 3 | Celah Riset (Gap) & Pertanyaan (RQ) | Tabel Perbandingan Penelitian Terdahulu     | 1.5 min |
+| 4 | Alur Metodologi & Preprocessing  | Diagram Alir (Pipeline) Sistem Komputasi    | 2.0 min |
+| 5 | Temuan Utama (Tabel Kinerja)     | Tabel Akurasi & F1-Score (Mean ± Std)       | 2.0 min |
+| 6 | Tren Visual Penurunan Performa   | Bar Chart + Error Bar (Formal vs Slang)     | 2.0 min |
+| 7 | Analisis Kegagalan Model (Failure) | Box Plot Sebaran Distribusi Run Eksperimen  | 1.5 min |
+| 8 | Batasan Penelitian & Kesimpulan  | Bullet points ringkas & Rencana Future Work  | 2.0 min |
 
 Anticipatory Defense Matrix:
 | Kategori | Pertanyaan Potensial | Jawaban (CER) |
 |----------|---------------------|---------------|
-| Problem  |                     |               |
-| Gap      |                     |               |
-| Method   |                     |               |
-| Results  |                     |               |
-| Generalization |               |               |
+| Problem  | Mengapa membandingkan teks formal dan slang, bukan fokus menaikkan akurasi saja? | [C] Karena ketahanan model terhadap noise tulisan jauh lebih penting untuk implementasi nyata. [E] Data ulasan e-commerce di lapangan didominasi teks slang yang menurunkan akurasi hingga 7%. [R] Menemukan batasan toleransi model terhadap ragam bahasa lebih mendesak bagi efisiensi sistem industri. |
+| Method   | Mengapa memilih C4.5 dan Naïve Bayes sebagai objek perbandingan? | [C] Keduanya mewakili dua pendekatan fundamental yang berbeda. [E] Naïve Bayes berbasis probabilitas murni, sementara C4.5 berbasis pohon keputusan non-linear. [R] Perbedaan arsitektur ini krusial untuk dipetakan guna melihat model mana yang paling rentan terhadap distorsi data. |
 
 Latihan:
-  Latihan 1: [tanggal] — [catatan timing & feedback]
-  Latihan 2: [tanggal] — [catatan timing & feedback]
-  Latihan 3: [tanggal] — [catatan timing & feedback]
+  Latihan 1: [11 Juli 2026] — Masalah pada manajemen waktu (slide hasil terlalu lama diulas), feedback: percepat transisi antar slide.
+  Latihan 2: [12 Juli 2026] — Penyampaian argumen CER sudah mulai tegas, waktu total pas 14.5 menit.
+
 ```
 
 ---
@@ -121,17 +122,17 @@ Rencanakan presentasi 15 menit untuk riset Anda.
 
 | # | Pesan Utama | Visual yang Digunakan | Waktu |
 |---|-------------|----------------------|-------|
-| 1 | *Contoh: Judul + konteks — rekomendasi vs kepuasan* | *Title slide, gambar sistem* | *1 min* |
-| 2 | *Contoh: Problem — RMSE tinggi tapi satisfaction rendah (45/100)* | *Bar chart: satisfaction vs RMSE per sistem* | *2 min* |
-| 3 | *Contoh: Gap + RQ — belum ada CF+context untuk satisfaction* | *Tabel gap literatur* | *1.5 min* |
-| 4 | | | |
-| 5 | | | |
-| 6 | | | |
-| 7 | | | |
-| 8 | | | |
-| 9 | | | |
+| 1 | Analisis Sentimen Ulasan E-Commerce Menggunakan Naïve Bayes dan C4.5: Studi Komparatif Teks Formal dan Slang. | Title slide dengan identitas mahasiswa (NIM 240202859, UPB). | 1.0 min |
+| 2 | Bahasa slang yang tidak terstruktur menurunkan kinerja algoritma secara drastis di lingkungan e-commerce nyata.| Foto komparasi ulasan produk yang rapi vs ulasan penuh singkatan gaul. | 2.0 min |
+| 3 | Belum ada studi komparatif mendalam yang memetakan batasan runtuhnya (boundary condition) Naïve Bayes vs C4.5 pada bahasa non-baku Indonesia. | Tabel pemetaan gap penelitian dari 10 jurnal referensi utama. | *1.5 min* |
+| 4 | Data melalui pembersihan (cleaning) dan transformasi pemetaan kamus slang (lexicon mapping). | Diagram alir Data Preprocessing Pipeline (WS-13). | 2.0 min |
+| 5 | C4.5 secara konsisten mengungguli Naïve Bayes di semua skenario pengujian. | Tabel hasil metrik Mean Accuracy ± Std (WS-12). | 2.0 min |
+| 6 | Terjadi penurunan performa yang signifikan pada kedua model saat berpindah dari teks formal ke teks slang. | Diagram batang (Bar Chart) dilengkapi garis Error Bar. | 2.0 min|
+| 7 | Naïve Bayes mengalami kegagalan kalkulasi akibat pelanggaran asumsi independensi fitur oleh frasa slang berulang. | Diagram kotak (Box Plot) sebaran nilai 40 run eksperimen. | 1.5min |
+| 8 | Kamus pemetaan slang buatan manual menjadi limitasi utama riset ini. | Teks matriks limitasi internal dan eksternal. | 1.5min |
+| 9 | Algoritma C4.5 terbukti lebih tangguh dan stabil dibanding Naïve Bayes dalam menangani noise karakteristik teks slang. | Slide ringkasan kontribusi ilmiah & penutup. | 1.0 min|
 
-**Total waktu estimasi:** ____ menit
+**Total waktu estimasi:** 15.0 menit
 
 ---
 
@@ -141,11 +142,11 @@ Prediksi 5 pertanyaan yang mungkin diajukan penguji, lalu siapkan jawaban CER.
 
 | # | Kategori | Pertanyaan | Claim | Evidence | Reasoning |
 |---|----------|-----------|-------|----------|-----------|
-| 1 | *Problem* | *Contoh: Mengapa fokus kepuasan, bukan akurasi?* | *Akurasi tinggi tidak menjamin kepuasan* | *Survey: 45/100 satisfaction meski RMSE 0.87* | *Gap antara metrik teknis dan pengalaman pengguna* |
-| 2 | *Method* | *Contoh: Mengapa hanya 3 dataset?* | *3 dataset mewakili variasi: small-clean, medium-clean, medium-noisy* | *Tabel karakteristik dataset di Bab Method* | *Generalisasi perlu validasi lanjut — tercatat sebagai limitasi* |
-| 3 | | | | | |
-| 4 | | | | | |
-| 5 | | | | | |
+| 1 | *Problem* | Mengapa masalah bahasa slang ini penting diteliti? | Bahasa slang adalah kendala utama klasifikasi teks ulasan di Indonesia. | Jurnal acuan mencatat ulasan Shopee mengandung >40% kata non-baku. | Jika algoritma tidak diuji ketahanan slangnya, model akan gagal total saat dideploy di aplikasi e-commerce riil. |
+| 2 | *Method* | Mengapa parameter normalisasi hanya dihitung dari training set? | Untuk menghindari fenomena kebocoran data (data leakage). | Aturan baku data preprocessing (WS-13) melarang pencampuran informasi test set. | Jika parameter TF-IDF dihitung dari seluruh data, hasil akurasi akan tinggi secara semu (bias) dan tidak valid. |
+| 3 | Results | Mengapa nilai standar deviasi ($\pm \text{std}$) Naïve Bayes lebih besar pada data slang? | Karena Naïve Bayes tidak stabil menghadapi variasi kata yang tinggi. | Nilai std Naïve Bayes naik dari 1.85% (formal) menjadi 3.10% (slang). | Kosakata slang yang acak mengacaukan pembagian probabilitas kata, membuat performanya fluktuatif di tiap run. |
+| 4 | Failure Analysis | Mengapa Anda menyebut penurunan performa ini bukan kegagalan riset? | Karena penemuan batasan model adalah bentuk kontribusi ilmiah. | Hasil uji statistik p-value = 0.012 dan d = 1.82 membuktikan efek penurunan ini nyata. | Mengetahui kapan model itu "runtuh" memberi petunjuk bagi peneliti lain untuk memperbaiki modul penanganan teks di masa depan. |
+| 5 | Generalization | Apakah hasil pengujian ini bisa langsung dipakai di domain teks selain e-commerce? | Tidak bisa langsung, harus ada penyesuaian korpus kata. | Karakteristik kata slang produk fashion berbeda dengan slang ulasan politik atau otomotif. | Perbedaan domain akan mengubah distribusi kata, yang tercatat sebagai batasan eksternal (external validity). |
 
 ---
 
@@ -154,15 +155,16 @@ Prediksi 5 pertanyaan yang mungkin diajukan penguji, lalu siapkan jawaban CER.
 Minta teman/kolega mengajukan 3 pertanyaan tentang riset Anda. Catat pertanyaan dan evaluasi jawaban Anda.
 
 | # | Pertanyaan | Jawaban Saya | Evaluasi |
-|---|-----------|-------------|---------|| *1* | *Contoh: "Mengapa tidak membandingkan dengan metode Y?"* | *Contoh: "Karena Y memerlukan dataset labeled yang tidak tersedia. Disebutkan sebagai limitasi di halaman X."* | *[✓] Direct [✓] Data-based [✓] Honest* || 1 | | | [ ] Direct [ ] Data-based [ ] Honest |
-| 2 | | | [ ] Direct [ ] Data-based [ ] Honest |
-| 3 | | | [ ] Direct [ ] Data-based [ ] Honest |
+|---|-----------|-------------|---------|
+| 1 | "Mengapa tidak menggunakan algoritma Deep Learning seperti BERT yang lebih modern?" | "Fokus riset saya adalah mengukur efisiensi algoritma komputasi ringan (C4.5 & Naïve Bayes) pada perangkat dengan spesifikasi terbatas. Hal ini sudah ditegaskan pada batasan masalah di Bab 1." | *[✓] Direct [✓] Data-based [✓] Honest* |
+| 2 | "Bagaimana jika data ulasan yang masuk tidak memiliki label sentimen sama sekali?" | "Model yang dilatih menggunakan basis data berlabel dari data training ($n=920$ records hasil cleaning). Data baru tanpa label akan diprediksi kelasnya berdasarkan aturan pohon keputusan C4.5 yang terbentuk." | [✓] Direct [✓] Data-based [✓] Honest |
+| 3 | "Apakah kamus bahasa slang yang digunakan sudah divalidasi oleh ahli bahasa?" | "Belum, kamus slang dikompilasi secara mandiri dari riset-riset terdahulu di Google Scholar. Ini adalah keterbatasan construct validity yang dicantumkan dalam draf laporan." | [✓] Direct [✓] Data-based [✓] Honest |
 
 **Pertanyaan yang paling sulit dijawab:**
-> ___________________________________________________
+> Mempertahankan alasan ilmiah mengapa nilai standar deviasi Naïve Bayes melonjak tinggi ketika membaca dataset ulasan teks slang.
 
 **Apa yang perlu disiapkan lebih baik:**
-> ___________________________________________________
+> Memperdalam pemahaman matematika dasar probabilitas bersyarat Naïve Bayes terhadap penanganan frekuensi kata bernilai nol (Laplace Smoothing).
 
 ---
 
@@ -171,7 +173,6 @@ Minta teman/kolega mengajukan 3 pertanyaan tentang riset Anda. Catat pertanyaan 
 > Dari seluruh proses WS-01 sampai WS-16 — dari paradigma riset hingga presentasi — bagian mana yang paling mengubah cara Anda berpikir tentang riset? Apa satu hal yang akan selalu Anda terapkan di riset berikutnya?
 
 **Insight terbesar:**
-> ___________________________________________________
-
+> Kegagalan atau penurunan performa suatu algoritma (failure analysis) dalam eksperimen ternyata bukanlah aib riset yang harus disembunyikan atau dimanipulasi angkanya. Mengetahui batasan operasional (boundary condition) suatu metode justru merupakan temuan ilmiah yang sangat mahal dan berharga bagi perkembangan ilmu pengetahuan.
 **Yang akan selalu diterapkan:**
-> ___________________________________________________
+> Menjaga konsistensi internal (Red Thread) sejak awal menentukan pertanyaan penelitian (RQ), desain variabel (IV & DV), hingga penyajian hasil. Saya tidak akan lagi melakukan over-preprocessing data atau visualisasi yang bias (seperti memotong sumbu Y grafik) demi sekadar membuat hasil penelitian terlihat "sempurna" di mata penguji.
