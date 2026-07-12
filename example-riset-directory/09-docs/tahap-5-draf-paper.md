@@ -1,5 +1,3 @@
-# Tahap 5 — Penulisan Draf Paper Jurnal
-
 # Tahap 5 — Penulisan Draf Paper
 
 **Status:** Selesai
