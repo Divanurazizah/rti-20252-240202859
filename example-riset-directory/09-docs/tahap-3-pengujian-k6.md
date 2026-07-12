@@ -1,6 +1,4 @@
-# Tahap 3 — Skrip Pengujian k6 (Legitimate vs Attack Traffic)
 
-**Status:** Selesai 
 # Tahap 3 — Validasi Model (10-Fold Cross-Validation)
 
 **Status:** Selesai
