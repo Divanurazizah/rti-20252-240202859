@@ -1,7 +1,3 @@
-# Tahap 1 — Perancangan Arsitektur & Skema Database
-
-**Status:** Selesai
-
 ---
 
 # Tahap 1 — Perancangan Dataset & Skema Data
