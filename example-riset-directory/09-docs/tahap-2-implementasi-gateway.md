@@ -1,6 +1,3 @@
-# Tahap 2 — Implementasi API Gateway (Go)
-
-**Status:** Selesai
 # Tahap 2 — Implementasi Model Klasifikasi
 
 **Status:** Selesai
