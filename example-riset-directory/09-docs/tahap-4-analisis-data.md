@@ -1,6 +1,4 @@
-# Tahap 4 — Ekstraksi Data & Visualisasi
 
-**Status:** Selesai
 # Tahap 4 — Analisis Hasil
 
 **Status:** Selesai
