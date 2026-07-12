@@ -4,24 +4,17 @@
 
 | Item | Keterangan |
 |---|---|
-| Judul | Performance and Security Evaluation of Mitigating JWKS Endpoint Flooding on Microservices Gateway Using Redis-PostgreSQL Hybrid Caching |
-| Target Publikasi | Sinta 2 (Jurnal RESTI/Telematika) atau Scopus Q3-Q4 |
-| Stack | Docker, PostgreSQL, Redis, API Gateway (Go), k6 |
-| Masalah | JWKS Endpoint Flooding via `kid` acak → kueri tak terbatas ke Identity Service/DB → resource exhaustion |
-| Solusi | Hybrid cache (Redis L1 + PostgreSQL L2) + negative caching + rate-limiting pada lookup kunci |
+| Judul | Analisis Komparatif Algoritma Naïve Bayes dan C4.5 pada Klasifikasi Sentimen Ulasan E-Commerce dengan Bahasa Slang |
+| Stack | Python, Scikit-Learn, Pandas, NumPy |
+| Masalah | Tingginya variasi bahasa slang pada ulasan produk yang menurunkan akurasi model |
+| Solusi | Normalisasi teks menggunakan kamus leksikon dan pembandingan algoritma Naïve Bayes vs C4.5 |
 
 ## 2. Alur Kerja (Roadmap)
 
-Setiap tahap memiliki file rencana detail tersendiri agar lebih rapi:
-
-- [x] **Tahap 1** — [Perancangan Arsitektur & Skema Database](tahap-1-arsitektur-dan-skema-database.md) — *Selesai*
-- [x] **Tahap 2** — [Implementasi API Gateway (Go)](tahap-2-implementasi-gateway.md) — *Selesai*
-- [x] **Tahap 3** — [Skrip Pengujian k6 (Legitimate vs Attack Traffic)](tahap-3-pengujian-k6.md) — *Selesai*
-- [x] **Tahap 4** — [Ekstraksi Data & Visualisasi](tahap-4-analisis-data.md) — *Selesai*
-- [ ] **Tahap 5** — [Draf Paper Jurnal](tahap-5-draf-paper.md) — *Berikutnya*
+[x] **Tahap 1**: Pengumpulan Dataset (920 ulasan) — *Selesai*
+- [x] **Tahap 2**: Pra-pemrosesan & Normalisasi Slang — *Selesai*
+- [x] **Tahap 3**: Ekstraksi Fitur (TF-IDF) & Klasifikasi — *Selesai*
+- [x] **Tahap 4**: Validasi (10-Fold Cross-Validation) & Analisis Statistik — *Selesai*
+- [x] **Tahap 5**: Penyusunan Manuskrip Jurnal — *Selesai*
 
 ---
-
-## 3. Catatan
-
-Dokumen ini adalah indeks utama. Detail teknis, skema, dan keputusan masing-masing tahap dicatat pada file `tahap-N-*.md` terkait dan diperbarui seiring progres pengerjaan.
